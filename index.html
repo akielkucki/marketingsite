@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMK Software</title>
+    <title>AMK Studios - Premium Web Development</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -18,7 +18,9 @@
         }
     </script>
     <style>
-         .products-orb-1, .products-orb-2, .products-orb-3 {
+         .products-orb-1, 
+         .products-orb-2, 
+         .products-orb-3 {
             animation: float 6s ease-in-out infinite;
         }
         .products-orb-2 {
@@ -67,6 +69,51 @@
                 transform: translateY(0);
             }
         }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-line {
+            transform-origin: center;
+        }
+
+        #mobile-menu.menu-open {
+            opacity: 1;
+            scale: 1;
+            pointer-events: all;
+        }
+
+        .mobile-nav-item {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-nav-item.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Desktop nav improvements */
+        nav a:not(.bg-gradient-to-r) {
+            position: relative;
+        }
+
+        nav a:not(.bg-gradient-to-r)::before {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00b7ff, #0040ff);
+            transition: width 0.3s ease;
+        }
+
+        nav a:not(.bg-gradient-to-r):hover::before {
+            width: 100%;
+        }
+
+        /* Enhanced hamburger animation */
+        .hamburger-line-1.open { transform: rotate(45deg) translate(6px, 6px); }
+        .hamburger-line-2.open { opacity: 0; }
+        .hamburger-line-3.open { transform: rotate(-45deg) translate(6px, -6px); }
     </style>
 </head>
 <body class="bg-gray-950 text-white overflow-x-hidden">
@@ -74,11 +121,71 @@
     <nav class="relative z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <brand-logo class="text-xl font-bold"></brand-logo>
+            
+            <!-- Desktop Navigation -->
             <div class="hidden md:flex space-x-8">
-                <a href="#" class="hover:text-blue-400 transition-colors duration-300">Products</a>
-                <a href="#" class="hover:text-blue-400 transition-colors duration-300">Features</a>
+                <a href="#" class="hover:text-blue-400 transition-colors duration-300">Services</a>
+                <a href="#" class="hover:text-blue-400 transition-colors duration-300">Portfolio</a>
                 <a href="#" class="hover:text-blue-400 transition-colors duration-300">About</a>
-                <a href="#" class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-2 rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">Get Started</a>
+                <a href="#" class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-2 rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">Start Project</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button 
+                id="mobile-menu-button" 
+                class="md:hidden relative w-10 h-10 flex flex-col justify-center items-center space-y-1.5 group z-50"
+                aria-label="Toggle mobile menu"
+            >
+                <span class="mobile-menu-line hamburger-line-1 block w-6 h-0.5 bg-white transition-all duration-300 group-hover:bg-blue-400"></span>
+                <span class="mobile-menu-line hamburger-line-2 block w-6 h-0.5 bg-white transition-all duration-300 group-hover:bg-blue-400"></span>
+                <span class="mobile-menu-line hamburger-line-3 block w-6 h-0.5 bg-white transition-all duration-300 group-hover:bg-blue-400"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div 
+            id="mobile-menu" 
+            class="md:hidden fixed inset-0 bg-gray-950/98 backdrop-blur-xl z-40 flex items-center justify-center transform scale-95 opacity-0 pointer-events-none transition-all duration-500 ease-in-out"
+        >
+            <!-- Close button -->
+            <button 
+                id="mobile-menu-close" 
+                class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-white hover:text-blue-400 transition-colors duration-300"
+                aria-label="Close mobile menu"
+            >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <!-- Navigation Items -->
+            <div class="text-center space-y-8">
+                <div class="mobile-nav-item opacity-0 transform translate-y-8">
+                    <a href="#" class="block text-4xl md:text-5xl font-bold text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 transition-all duration-500">
+                        Services
+                    </a>
+                </div>
+                <div class="mobile-nav-item opacity-0 transform translate-y-8">
+                    <a href="#" class="block text-4xl md:text-5xl font-bold text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 transition-all duration-500">
+                        Portfolio
+                    </a>
+                </div>
+                <div class="mobile-nav-item opacity-0 transform translate-y-8">
+                    <a href="#" class="block text-4xl md:text-5xl font-bold text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-600 transition-all duration-500">
+                        About
+                    </a>
+                </div>
+                <div class="mobile-nav-item opacity-0 transform translate-y-8">
+                    <a href="#" class="inline-block bg-gradient-to-r from-blue-500 to-blue-600 px-12 py-4 rounded-full text-xl font-semibold text-white hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all duration-300 mt-8">
+                        Start Project
+                    </a>
+                </div>
+            </div>
+
+            <!-- Background decoration -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
             </div>
         </div>
     </nav>
@@ -99,42 +206,42 @@
             <!-- Main Headline -->
             <div class="mb-8">
                 <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 opacity-0 transform translate-y-12">
-                    Where quotes become<br>
-                    <span class="gradient-text bg-clip-text bg-gradient-to-r from-[#00b7ff] via-[#0066ff] to-[#0040ff] text-transparent font-black bg-[length:200%_200%]">conversions</span>
+                    Premium websites that<br>
+                    <span class="gradient-text bg-clip-text bg-gradient-to-r from-[#00b7ff] via-[#0066ff] to-[#0040ff] text-transparent font-black bg-[length:200%_200%]">drive growth</span>
                 </h1>
             </div>
 
             <!-- Subheadline -->
             <div class="mb-12">
                 <p class="hero-subtitle text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed opacity-0 transform translate-y-8">
-                    Streamline your sales process with our intelligent quote generator and comprehensive CRM. Turn prospects into customers faster than ever before.
+                    Transform your digital presence with custom web development, SEO optimization, and cutting-edge design. Plus get exclusive access to our business automation tools.
                 </p>
             </div>
 
             <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
                 <button class="cta-primary group relative px-8 py-4 bg-gradient-to-r from-[#00b7ff] to-[#0040ff] rounded-full text-lg font-semibold opacity-0 transform translate-y-8">
-                    <span class="relative z-10">Start Free Trial</span>
+                    <span class="relative z-10">Start Your Project</span>
                     <div class="absolute inset-0 bg-gradient-to-r from-[#00c3ff] to-[#0056ff] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
                 <button class="cta-secondary px-8 py-4 border-2 border-gray-600 rounded-full text-lg font-semibold opacity-0 transform translate-y-8 hover:border-blue-400 transition-colors duration-300">
-                    Watch Demo
+                    View Portfolio
                 </button>
             </div>
 
             <!-- Trust Indicators -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
                 <div class="trust-item text-center opacity-0 transform translate-y-8">
-                    <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent mb-2"><span data-number="89">0</span>%</div>
-                    <div class="text-gray-400 text-sm">Faster Quote Generation</div>
+                    <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent mb-2"><span data-number="150">0</span>%</div>
+                    <div class="text-gray-400 text-sm">Average Speed Increase</div>
                 </div>
                 <div class="trust-item text-center opacity-0 transform translate-y-8">
-                    <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent mb-2"><span data-number="2500">0</span>+</div>
-                    <div class="text-gray-400 text-sm">Active Users</div>
+                    <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent mb-2"><span data-number="50">0</span>+</div>
+                    <div class="text-gray-400 text-sm">Websites Delivered</div>
                 </div>
                 <div class="trust-item text-center opacity-0 transform translate-y-8">
-                    <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent mb-2"><span data-number="45">0</span>%</div>
-                    <div class="text-gray-400 text-sm">Higher Close Rate</div>
+                    <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent mb-2"><span data-number="85">0</span>%</div>
+                    <div class="text-gray-400 text-sm">More Conversions</div>
                 </div>
                 <div class="trust-item text-center opacity-0 transform translate-y-8">
                     <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent mb-2">24/<span data-number="7">0</span></div>
@@ -153,7 +260,7 @@
                                 <path d="M8 5v14l11-7z"/>
                             </svg>
                         </div>
-                        <p class="text-gray-300">Click to watch our product demo</p>
+                        <p class="text-gray-300">See our latest website projects</p>
                     </div>
                 </div>
             </div>
@@ -182,22 +289,22 @@
                     </div>
                     
                     <h2 class="about-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight opacity-0 transform translate-y-8">
-                        Built by developers,<br>
-                        <span class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent">for businesses</span>
+                        Web development experts<br>
+                        <span class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent">building digital success</span>
                     </h2>
                     
                     <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
                         <p class="about-text opacity-0 transform translate-y-8">
-                            Founded in 2022, AMK Software emerged from a simple observation: businesses waste countless hours on manual quote generation and struggle with fragmented customer data. We built the solution we wished existed.
+                            Founded in 2022 by experienced developers, AMK Software specializes in creating high-performance websites that drive business growth. We combine cutting-edge design with robust development to deliver exceptional digital experiences.
                         </p>
                         <p class="about-text opacity-0 transform translate-y-8">
-                            Our intelligent quote generator transforms how businesses create proposals, while our upcoming CRM will revolutionize customer relationship management. Every feature is designed with efficiency and user experience at its core.
+                            Beyond beautiful websites, we've developed proprietary business tools including an intelligent quote generator and upcoming CRM system—exclusive bonuses for our web development clients to streamline their operations.
                         </p>
                     </div>
 
                     <div class="about-cta opacity-0 transform translate-y-8">
                         <button class="group relative px-8 py-4 bg-gradient-to-r from-[#00b7ff] to-[#0040ff] rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
-                            <span class="relative z-10">Meet Our Team</span>
+                            <span class="relative z-10">See Our Work</span>
                             <div class="absolute inset-0 bg-gradient-to-r from-[#00c3ff] to-[#0056ff] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </button>
                     </div>
@@ -207,17 +314,17 @@
                 <div class="grid grid-cols-2 gap-8">
                     <div class="about-stat space-y-4 p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl opacity-0 transform translate-y-8">
                         <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent">3+</div>
-                        <div class="text-gray-300">Years of development</div>
+                        <div class="text-gray-300">Years perfecting web craft</div>
                     </div>
 
                     <div class="about-stat space-y-4 p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl opacity-0 transform translate-y-8">
                         <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent">12+</div>
-                        <div class="text-gray-300">Software engineers</div>
+                        <div class="text-gray-300">Expert developers</div>
                     </div>
 
                     <div class="about-stat space-y-4 p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl opacity-0 transform translate-y-8">
                         <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent">50+</div>
-                        <div class="text-gray-400 text-sm">Industries supported</div>
+                        <div class="text-gray-400 text-sm">Industries served</div>
                     </div>
 
                     <div class="about-stat space-y-4 p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl opacity-0 transform translate-y-8">
@@ -243,104 +350,189 @@
             <div class="text-center mb-20">
                 <div class="services-badge inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-full text-sm font-medium text-purple-300 mb-8 opacity-0 transform translate-y-8">
                     <div class="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                    What We Do
+                    Our Services
                 </div>
                 
                 <h2 class="services-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 opacity-0 transform translate-y-8">
-                    Complete digital<br>
-                    <span class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#8b5cf6] text-transparent">growth solutions</span>
+                    Complete web development<br>
+                    <span class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#8b5cf6] text-transparent">solutions that scale</span>
                 </h2>
                 
                 <p class="services-subtitle text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed opacity-0 transform translate-y-8">
-                    We don't just build software—we transform your entire digital presence to drive real business growth. From websites to lead conversion, we handle it all.
+                    From stunning design to powerful performance optimization, we handle every aspect of your web presence. Plus exclusive access to our custom business automation tools.
                 </p>
             </div>
 
             <!-- Services Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <!-- Service 1: Website & SEO -->
-                <div class="service-card group p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-blue-500/30 transition-all duration-500 opacity-0 transform translate-y-8">
+            <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Service 1: Website Development (Primary) -->
+                <div class="service-card group lg:col-span-2 p-8 bg-gradient-to-br from-blue-500/10 to-blue-600/10 backdrop-blur-sm border border-blue-500/30 rounded-3xl hover:border-blue-400/50 transition-all duration-500 opacity-0 transform translate-y-8">
                     <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Website & SEO Optimization</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">Transform your outdated website into a lead-generating machine. We optimize every element for search engines and user experience to maximize your online presence.</p>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Mobile-First Design</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>SEO Optimization</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Speed Optimization</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Conversion-Focused</li>
-                    </ul>
+                    <h3 class="text-3xl font-bold mb-4 text-white">Custom Website Development</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg">Build powerful, conversion-focused websites that represent your brand perfectly. From responsive design to lightning-fast performance, we create digital experiences that drive results and grow with your business.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="space-y-3">
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Custom Design & Development
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Mobile-First Responsive Design
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>SEO Optimization
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Lightning-Fast Performance
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>E-commerce Integration
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>CMS Implementation
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Advanced Analytics
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Ongoing Maintenance
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full group relative px-6 py-3 bg-gradient-to-r from-[#00b7ff] to-[#0040ff] rounded-xl text-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
+                        <span class="relative z-10">Start Your Website Project</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#00c3ff] to-[#0056ff] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </button>
                 </div>
 
-                <!-- Service 2: Analytics & Insights -->
+                <!-- Service 2: Performance & Analytics -->
                 <div class="service-card group p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-purple-500/30 transition-all duration-500 opacity-0 transform translate-y-8">
                     <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Analytics & Performance Tracking</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">Know exactly what's working and what isn't. Our comprehensive analytics dashboard shows you where your visitors come from, what they do, and how to improve conversion rates.</p>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3"></span>Visitor Behavior Tracking</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3"></span>Conversion Rate Analysis</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3"></span>ROI Measurement</li>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Performance & Analytics</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">Monitor, analyze, and optimize your website's performance with comprehensive analytics and speed optimization services.</p>
+                    <ul class="space-y-2 text-gray-400 mb-6">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3"></span>Speed Optimization</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3"></span>Conversion Tracking</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3"></span>User Behavior Analysis</li>
                         <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3"></span>Performance Reports</li>
                     </ul>
+                    <button class="w-full px-6 py-3 border border-purple-500/50 rounded-xl text-sm font-semibold text-purple-300 hover:bg-purple-500/10 transition-all duration-300">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bonus Tools Section -->
+            <div class="bg-gradient-to-r from-gray-800/20 to-gray-900/20 backdrop-blur-sm border border-gray-700/30 rounded-3xl p-8 mb-16">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-full text-sm font-medium text-green-300 mb-4">
+                        <div class="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                        Exclusive Client Bonuses
+                    </div>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white">Powerful business tools included</h3>
+                    <p class="text-gray-300 text-lg max-w-3xl mx-auto">Every web development client gets exclusive access to our proprietary business automation software—no additional cost.</p>
                 </div>
 
-                <!-- Service 3: Lead Engagement -->
-                <div class="service-card group p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-cyan-500/30 transition-all duration-500 opacity-0 transform translate-y-8">
-                    <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Bonus Tool 1: Quote Generator -->
+                    <div class="p-6 bg-gradient-to-br from-cyan-500/5 to-cyan-600/5 border border-cyan-500/20 rounded-2xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white">Quote Generator</h4>
+                                <div class="inline-flex items-center px-2 py-1 bg-green-500/20 border border-green-500/30 rounded-full text-xs font-medium text-green-300">
+                                    <div class="w-1.5 h-1.5 bg-green-400 rounded-full mr-1.5"></div>
+                                    Included Free
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-4">Streamline your proposal process with intelligent quote generation, custom branding, and automated follow-ups.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-cyan-500/10 text-cyan-300 text-xs rounded-full">Instant Quotes</span>
+                            <span class="px-2 py-1 bg-cyan-500/10 text-cyan-300 text-xs rounded-full">PDF Export</span>
+                            <span class="px-2 py-1 bg-cyan-500/10 text-cyan-300 text-xs rounded-full">Email Integration</span>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Instant Lead Engagement</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">Never miss a hot lead again. Our intelligent system identifies high-intent visitors and enables instant engagement through live chat, automated responses, and real-time notifications.</p>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-3"></span>Real-Time Chat</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-3"></span>Lead Scoring</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-3"></span>Instant Notifications</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-3"></span>Automated Follow-ups</li>
-                    </ul>
+
+                    <!-- Bonus Tool 2: CRM System -->
+                    <div class="p-6 bg-gradient-to-br from-orange-500/5 to-orange-600/5 border border-orange-500/20 rounded-2xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white">CRM System</h4>
+                                <div class="inline-flex items-center px-2 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-xs font-medium text-orange-300">
+                                    <div class="w-1.5 h-1.5 bg-orange-400 rounded-full mr-1.5"></div>
+                                    Coming Q3 2025
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-4">Comprehensive customer relationship management with lead tracking, pipeline visualization, and automated workflows.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-orange-500/10 text-orange-300 text-xs rounded-full">Lead Tracking</span>
+                            <span class="px-2 py-1 bg-orange-500/10 text-orange-300 text-xs rounded-full">Pipeline Management</span>
+                            <span class="px-2 py-1 bg-orange-500/10 text-orange-300 text-xs rounded-full">Automation</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- How It Works Process -->
             <div class="mb-16">
-                <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">How We Drive Your Growth</h3>
-                <div class="grid md:grid-cols-3 gap-8">
+                <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">Our Web Development Process</h3>
+                <div class="grid md:grid-cols-4 gap-8">
                     <div class="text-center">
                         <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-2xl font-bold text-white">1</span>
                         </div>
-                        <h4 class="text-xl font-semibold text-white mb-2">Audit & Optimize</h4>
-                        <p class="text-gray-300">We analyze your current website, identify weaknesses, and implement proven optimization strategies for better search rankings and user experience.</p>
+                        <h4 class="text-xl font-semibold text-white mb-2">Discovery</h4>
+                        <p class="text-gray-300">We analyze your business goals, target audience, and technical requirements to create the perfect strategy.</p>
                     </div>
                     <div class="text-center">
                         <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-2xl font-bold text-white">2</span>
                         </div>
-                        <h4 class="text-xl font-semibold text-white mb-2">Track & Measure</h4>
-                        <p class="text-gray-300">Install comprehensive analytics to monitor visitor behavior, conversion paths, and identify the highest-performing content and pages.</p>
+                        <h4 class="text-xl font-semibold text-white mb-2">Design</h4>
+                        <p class="text-gray-300">Create stunning, user-focused designs that reflect your brand and optimize for conversions.</p>
                     </div>
                     <div class="text-center">
                         <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
                             <span class="text-2xl font-bold text-white">3</span>
                         </div>
-                        <h4 class="text-xl font-semibold text-white mb-2">Engage & Convert</h4>
-                        <p class="text-gray-300">Capture hot leads the moment they show interest with instant chat, smart forms, and automated engagement sequences that turn visitors into customers.</p>
+                        <h4 class="text-xl font-semibold text-white mb-2">Develop</h4>
+                        <p class="text-gray-300">Build your website with clean code, optimal performance, and seamless functionality across all devices.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-white">4</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-2">Launch & Support</h4>
+                        <p class="text-gray-300">Deploy your site with full testing, plus ongoing support and access to our exclusive business tools.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Products Section -->
+    <!-- Portfolio Section -->
     <section id="products-section" class="products-scroll-section relative bg-gradient-to-br from-gray-950 via-black to-blue-950/20 z-30">
         <div class="products-sticky-container sticky top-0 min-h-screen flex items-center justify-center px-6 py-20">
             <!-- Background Elements -->
@@ -355,159 +547,81 @@
                 <div class="text-center mb-20">
                     <div class="products-badge inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-full text-sm font-medium text-blue-300 mb-8 fade-in-up">
                         <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-                        Our Products
+                        Recent Work
                     </div>
                     
                     <h2 class="products-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 fade-in-up" style="animation-delay: 0.2s;">
-                        <span>Powerful software</span><br>
+                        <span>Websites that deliver</span><br>
                         <span class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#00ffff] text-transparent">
-                            <span>that drives </span><span class="results-word">results</span>
+                            <span>real </span><span class="results-word">results</span>
                         </span>
                     </h2>
                     
                     <p class="products-subtitle text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed fade-in-up" style="animation-delay: 0.4s;">
-                        From instant quote generation to comprehensive customer management, our suite of tools is designed to accelerate your business growth.
+                        See how our custom web development transforms businesses across industries, plus the exclusive tools that come with every project.
                     </p>
                 </div>
 
-                <!-- Products Grid -->
-                <div class="products-grid grid lg:grid-cols-2 gap-12 mb-16">
-                    <!-- Product 1: Quote Generator -->
-                    <div class="service-card group p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-blue-500/30 transition-all duration-500 fade-in-up" style="animation-delay: 0.6s;">
-                        <div class="flex items-center mb-6">
-                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-3xl font-bold mb-2 text-white">Quote Generator</h3>
-                                <div class="inline-flex items-center px-3 py-1 bg-green-500/20 border border-green-500/30 rounded-full text-sm font-medium text-green-300">
-                                    <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                                    Available Now
+                <!-- Portfolio Grid -->
+                <div class="products-grid grid lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Portfolio Item 1 -->
+                    <div class="service-card group lg:col-span-2 p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-blue-500/30 transition-all duration-500 fade-in-up" style="animation-delay: 0.6s;">
+                        <div class="aspect-video bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-2xl mb-6 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5"></div>
+                            <div class="text-center z-10">
+                                <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
                                 </div>
+                                <p class="text-white font-semibold">E-commerce Platform</p>
+                                <p class="text-gray-400 text-sm">+285% conversion increase</p>
                             </div>
                         </div>
                         
-                        <p class="text-gray-300 mb-6 leading-relaxed text-lg">
-                            Create professional, accurate quotes in seconds. Our intelligent system learns from your pricing patterns and suggests optimal rates while maintaining your profit margins.
+                        <h3 class="text-2xl font-bold mb-3 text-white">Modern E-commerce Solution</h3>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            Complete redesign and development of high-performance e-commerce platform with custom checkout flow, inventory management, and mobile optimization.
                         </p>
                         
-                        <div class="grid md:grid-cols-2 gap-4 mb-8">
-                            <div class="space-y-3">
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Instant quote creation
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Custom branding
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Smart pricing suggestions
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    PDF export
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Email integration
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Analytics dashboard
-                                </div>
-                            </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-blue-500/10 text-blue-300 text-sm rounded-full">Custom Development</span>
+                            <span class="px-3 py-1 bg-blue-500/10 text-blue-300 text-sm rounded-full">E-commerce</span>
+                            <span class="px-3 py-1 bg-blue-500/10 text-blue-300 text-sm rounded-full">SEO Optimized</span>
+                            <span class="px-3 py-1 bg-green-500/10 text-green-300 text-sm rounded-full">+ Bonus Tools</span>
                         </div>
 
-                        <button class="w-full group relative px-6 py-3 bg-gradient-to-r from-[#00b7ff] to-[#0040ff] rounded-xl text-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
-                            <span class="relative z-10">Start Free Trial</span>
-                            <div class="absolute inset-0 bg-gradient-to-r from-[#00c3ff] to-[#0056ff] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <button class="w-full group relative px-6 py-3 border border-blue-500/50 rounded-xl text-lg font-semibold text-blue-300 hover:bg-blue-500/10 transition-all duration-300">
+                            <span class="relative z-10">View Case Study</span>
                         </button>
                     </div>
 
-                    <!-- Product 2: CRM -->
-                    <div class="service-card group p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-purple-500/30 transition-all duration-500 fade-in-up" style="animation-delay: 0.8s;">
-                        <div class="flex items-center mb-6">
-                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-3xl font-bold mb-2 text-white">CRM System</h3>
-                                <div class="inline-flex items-center px-3 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-sm font-medium text-orange-300">
-                                    <div class="w-2 h-2 bg-orange-400 rounded-full mr-2"></div>
-                                    Coming Soon
+                    <!-- Portfolio Item 2 -->
+                    <div class="service-card group p-6 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-purple-500/30 transition-all duration-500 fade-in-up" style="animation-delay: 0.8s;">
+                        <div class="aspect-square bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-2xl mb-4 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                    </svg>
                                 </div>
+                                <p class="text-white font-semibold text-sm">Corporate Website</p>
+                                <p class="text-gray-400 text-xs">+150% lead generation</p>
                             </div>
                         </div>
                         
-                        <p class="text-gray-300 mb-6 leading-relaxed text-lg">
-                            A comprehensive customer relationship management system that seamlessly integrates with our quote generator. Track leads, manage relationships, and close more deals.
+                        <h4 class="text-lg font-bold mb-2 text-white">Professional Services Site</h4>
+                        <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+                            Brand refresh with lead-optimized design and integrated quote generation system.
                         </p>
                         
-                        <div class="grid md:grid-cols-2 gap-4 mb-8">
-                            <div class="space-y-3">
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Lead tracking & scoring
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Contact management
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Pipeline visualization
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Automated follow-ups
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Sales reporting
-                                </div>
-                                <div class="flex items-center text-gray-300">
-                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Integration ready
-                                </div>
-                            </div>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-xs rounded-full">Responsive</span>
+                            <span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-xs rounded-full">CMS</span>
                         </div>
 
-                        <button class="w-full group relative px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-700 rounded-xl text-lg font-semibold transition-all duration-300 cursor-not-allowed" disabled>
-                            <span class="relative z-10 text-gray-400">Notify Me When Available</span>
+                        <button class="w-full px-4 py-2 border border-purple-500/50 rounded-lg text-sm font-semibold text-purple-300 hover:bg-purple-500/10 transition-all duration-300">
+                            View Project
                         </button>
                     </div>
                 </div>
@@ -516,17 +630,17 @@
                 <div class="text-center fade-in-up" style="animation-delay: 1s;">
                     <div class="inline-flex items-center justify-center p-8 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-3xl max-w-4xl mx-auto">
                         <div class="text-center">
-                            <h3 class="text-3xl font-bold mb-4 text-white">Ready to accelerate your business?</h3>
+                            <h3 class="text-3xl font-bold mb-4 text-white">Ready to transform your digital presence?</h3>
                             <p class="text-gray-300 mb-6 text-lg leading-relaxed">
-                                Join thousands of businesses already using our tools to streamline their operations and boost revenue.
+                                Get a custom website that drives results, plus exclusive access to our business automation tools—all included in one package.
                             </p>
                             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                                 <button class="group relative px-8 py-4 bg-gradient-to-r from-[#00b7ff] to-[#0040ff] rounded-xl text-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
-                                    <span class="relative z-10">Get Started Free</span>
+                                    <span class="relative z-10">Start Your Project</span>
                                     <div class="absolute inset-0 bg-gradient-to-r from-[#00c3ff] to-[#0056ff] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </button>
                                 <button class="px-8 py-4 border border-gray-600 rounded-xl text-lg font-semibold text-gray-300 hover:border-gray-500 hover:text-white transition-all duration-300">
-                                    Schedule Demo
+                                    View Full Portfolio
                                 </button>
                             </div>
                         </div>
@@ -554,20 +668,20 @@
                 <div class="space-y-8">
                     <div class="contact-badge inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-full text-sm font-medium text-blue-300 opacity-0 transform translate-y-8">
                         <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-                        Let's Build Together
+                        Let's Build Your Success
                     </div>
                     
                     <h2 class="contact-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight opacity-0 transform translate-y-8">
-                        Ready to streamline<br>
-                        <span class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#00ffff] text-transparent">your business?</span>
+                        Ready to launch<br>
+                        <span class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#00ffff] text-transparent">your dream website?</span>
                     </h2>
                     
                     <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
                         <p class="contact-text opacity-0 transform translate-y-8">
-                            Whether you need our quote generation software, custom web development, or comprehensive analytics, we're here to help transform your operations.
+                            From custom web development to comprehensive digital strategy, we create solutions that grow your business. Every project includes our exclusive automation tools.
                         </p>
                         <p class="contact-text opacity-0 transform translate-y-8">
-                            Every project starts with understanding your unique business needs. We build solutions that scale with you, not against you.
+                            Let's discuss your vision and create a website that not only looks amazing but drives real results for your business.
                         </p>
                     </div>
     
@@ -581,7 +695,7 @@
                             </div>
                             <div>
                                 <div class="text-white font-semibold">Email Us</div>
-                                <div class="text-gray-400">hello@amksoftware.com</div>
+                                <div class="text-gray-400">hello@amkstudios.com</div>
                             </div>
                         </div>
     
@@ -675,13 +789,12 @@
                                 class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
                             >
                                 <option value="">Select project type</option>
-                                <option value="quote-software">Quote Generation Software</option>
-                                <option value="crm-interest">CRM System (Coming Soon)</option>
-                                <option value="web-development">Web Development</option>
-                                <option value="analytics">Business Analytics</option>
-                                <option value="api-integration">API Development</option>
-                                <option value="cloud-solutions">Cloud Solutions</option>
-                                <option value="consultation">General Consultation</option>
+                                <option value="website-development">Custom Website Development</option>
+                                <option value="ecommerce">E-commerce Platform</option>
+                                <option value="website-redesign">Website Redesign</option>
+                                <option value="seo-optimization">SEO & Performance</option>
+                                <option value="maintenance">Website Maintenance</option>
+                                <option value="consultation">Strategy Consultation</option>
                             </select>
                         </div>
     
@@ -690,41 +803,41 @@
                             <label class="block text-sm font-medium text-gray-300 mb-3">Additional Services of Interest</label>
                             <div class="grid grid-cols-2 gap-3">
                                 <label class="flex items-center">
-                                    <input type="checkbox" name="services[]" value="quote-generation" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
-                                    <span class="ml-2 text-sm text-gray-300">Quote Software</span>
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="services[]" value="crm-system" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
-                                    <span class="ml-2 text-sm text-gray-300">CRM System</span>
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="services[]" value="web-design" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
+                                    <input type="checkbox" name="services[]" value="web-development" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
                                     <span class="ml-2 text-sm text-gray-300">Web Development</span>
                                 </label>
                                 <label class="flex items-center">
+                                    <input type="checkbox" name="services[]" value="seo-optimization" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
+                                    <span class="ml-2 text-sm text-gray-300">SEO Optimization</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="services[]" value="quote-software" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
+                                    <span class="ml-2 text-sm text-gray-300">Quote Software</span>
+                                </label>
+                                <label class="flex items-center">
                                     <input type="checkbox" name="services[]" value="analytics" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
-                                    <span class="ml-2 text-sm text-gray-300">Analytics</span>
+                                    <span class="ml-2 text-sm text-gray-300">Analytics Setup</span>
                                 </label>
                                 <label class="flex items-center">
-                                    <input type="checkbox" name="services[]" value="api-development" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-2">
-                                    <span class="ml-2 text-sm text-gray-300">API Development</span>
+                                    <input type="checkbox" name="services[]" value="crm-system" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-2">
+                                    <span class="ml-2 text-sm text-gray-300">CRM System</span>
                                 </label>
                                 <label class="flex items-center">
-                                    <input type="checkbox" name="services[]" value="cloud-solutions" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
-                                    <span class="ml-2 text-sm text-gray-300">Cloud Solutions</span>
+                                    <input type="checkbox" name="services[]" value="maintenance" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
+                                    <span class="ml-2 text-sm text-gray-300">Ongoing Support</span>
                                 </label>
                             </div>
                         </div>
     
                         <!-- Message -->
                         <div class="form-group">
-                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Tell us about your project</label>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Tell us about your website project</label>
                             <textarea 
                                 id="message" 
                                 name="message" 
                                 rows="4"
                                 class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none"
-                                placeholder="Describe your software needs, business challenges, or what you'd like to achieve..."
+                                placeholder="Describe your website goals, target audience, desired features, or any specific requirements..."
                             ></textarea>
                         </div>
     
@@ -734,10 +847,10 @@
                                 type="submit"
                                 class="w-full group relative px-8 py-4 bg-gradient-to-r from-[#00b7ff] to-[#00ffff] rounded-xl text-lg font-semibold text-black hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-[1.02]"
                             >
-                                <span class="relative z-10">Get Your Free Consultation</span>
+                                <span class="relative z-10">Start Your Web Project</span>
                                 <div class="absolute inset-0 bg-gradient-to-r from-[#00c3ff] to-[#00ffff] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </button>
-                            <p class="text-xs text-gray-400 mt-2 text-center">We'll respond within 24 hours with a custom solution plan</p>
+                            <p class="text-xs text-gray-400 mt-2 text-center">Free consultation and project proposal within 24 hours</p>
                         </div>
                     </form>
                 </div>
@@ -783,7 +896,7 @@
     </section>
 
     <script type="module">
-        import { animate, stagger, scroll } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+        import { animate, stagger, scroll, press } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
 
         document.addEventListener('DOMContentLoaded', () => {
             // Background orbs animations
@@ -900,11 +1013,32 @@
             if (servicesBadge) observer.observe(servicesBadge);
             if (productsBadge) observer.observe(productsBadge);
         });
+        let isSelected = false;
+        press("#mobile-menu-button", (e)=> {
+            isSelected = !isSelected;
+            let line1 = e.querySelector(".hamburger-line-1")
+            let line2 = e.querySelector(".hamburger-line-2")
+            let line3 = e.querySelector(".hamburger-line-3")
+            const line1motion = {
+                rotate: isSelected ? [0,45] : [45,0],
+                translateY: isSelected ? [0,7.5] : [7.5,0]
+            }
+            const line2motion = {
+                rotate: isSelected ? [0,-45] : [-45,0],
+            }
+            const line3motion = {
+                opacity: isSelected ? 0 : [0,0.2,1]
+            }
+            Promise.all([animate(line1, line1motion),
+            animate(line2, line2motion)]).then(()=> {
+                animate(line3, line3motion)
 
+            })
+        })
         // Logo component
         class Logo extends HTMLElement {
             connectedCallback() {
-                this.innerHTML = `<p class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent font-bold">AMK Software</p>`;
+                this.innerHTML = `<p class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent font-bold">AMK Studios</p>`;
             }
         }
         customElements.define('brand-logo', Logo);
