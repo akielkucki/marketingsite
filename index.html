@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMK Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'purple-950': '#1a0b2e',
+                        'purple-900': '#2d1b69',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+         .products-orb-1, .products-orb-2, .products-orb-3 {
+            animation: float 6s ease-in-out infinite;
+        }
+        .products-orb-2 {
+            animation-delay: -2s;
+        }
+        .products-orb-3 {
+            animation-delay: -4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .results-word {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 3px #00b7ff, 0 0 5px #00b7ff, 0 0 7.5px #00b7ff;
+            }
+            to {
+                text-shadow: 0 0 6px #00ffff, 0 0 12px #00ffff, 0 0 15px #00ffff;
+            }
+        }
+
+        .service-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 183, 255, 0.15);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="relative z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <brand-logo class="text-xl font-bold"></brand-logo>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="hover:text-blue-400 transition-colors duration-300">Products</a>
+                <a href="#" class="hover:text-blue-400 transition-colors duration-300">Features</a>
+                <a href="#" class="hover:text-blue-400 transition-colors duration-300">About</a>
+                <a href="#" class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-2 rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col items-center justify-center px-6 z-40 relative">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="bg-orb-1 absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div class="bg-orb-2 absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+            <div class="bg-orb-3 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Grid Pattern Overlay -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] h-[calc(100vh+4.35rem)]"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto text-center">
+            <!-- Main Headline -->
+            <div class="mb-8">
+                <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 opacity-0 transform translate-y-12">
+                    Where quotes become<br>
+                    <span class="gradient-text bg-clip-text bg-gradient-to-r from-[#00b7ff] via-[#0066ff] to-[#0040ff] text-transparent font-black bg-[length:200%_200%]">conversions</span>
+                </h1>
+            </div>
+
+            <!-- Subheadline -->
+            <div class="mb-12">
+                <p class="hero-subtitle text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed opacity-0 transform translate-y-8">
+                    Streamline your sales process with our intelligent quote generator and comprehensive CRM. Turn prospects into customers faster than ever before.
+                </p>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                <button class="cta-primary group relative px-8 py-4 bg-gradient-to-r from-[#00b7ff] to-[#0040ff] rounded-full text-lg font-semibold opacity-0 transform translate-y-8">
+                    <span class="relative z-10">Start Free Trial</span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#00c3ff] to-[#0056ff] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
+                <button class="cta-secondary px-8 py-4 border-2 border-gray-600 rounded-full text-lg font-semibold opacity-0 transform translate-y-8 hover:border-blue-400 transition-colors duration-300">
+                    Watch Demo
+                </button>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="trust-item text-center opacity-0 transform translate-y-8">
+                    <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent mb-2"><span data-number="89">0</span>%</div>
+                    <div class="text-gray-400 text-sm">Faster Quote Generation</div>
+                </div>
+                <div class="trust-item text-center opacity-0 transform translate-y-8">
+                    <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent mb-2"><span data-number="2500">0</span>+</div>
+                    <div class="text-gray-400 text-sm">Active Users</div>
+                </div>
+                <div class="trust-item text-center opacity-0 transform translate-y-8">
+                    <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent mb-2"><span data-number="45">0</span>%</div>
+                    <div class="text-gray-400 text-sm">Higher Close Rate</div>
+                </div>
+                <div class="trust-item text-center opacity-0 transform translate-y-8">
+                    <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent mb-2">24/<span data-number="7">0</span></div>
+                    <div class="text-gray-400 text-sm">Support Available</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Video/Screenshot Placeholder -->
+        <div class="mt-16 relative w-full max-w-4xl mx-auto">
+            <div class="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 ring-2 ring-blue-800 shadow-[0_5px_35px_rgba(0,156,255,0.8)]">
+                <div class="aspect-video bg-gray-800 rounded-xl flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-300">Click to watch our product demo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="min-h-screen bg-gradient-to-br flex items-center justify-center px-6 z-30">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="bg-orb-1 absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div class="bg-orb-2 absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+            <div class="bg-orb-3 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Grid Pattern Overlay -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <div class="about-badge inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-sm font-medium text-blue-300 opacity-0 transform translate-y-8">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                        About AMK Software
+                    </div>
+                    
+                    <h2 class="about-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight opacity-0 transform translate-y-8">
+                        Built by developers,<br>
+                        <span class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent">for businesses</span>
+                    </h2>
+                    
+                    <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                        <p class="about-text opacity-0 transform translate-y-8">
+                            Founded in 2022, AMK Software emerged from a simple observation: businesses waste countless hours on manual quote generation and struggle with fragmented customer data. We built the solution we wished existed.
+                        </p>
+                        <p class="about-text opacity-0 transform translate-y-8">
+                            Our intelligent quote generator transforms how businesses create proposals, while our upcoming CRM will revolutionize customer relationship management. Every feature is designed with efficiency and user experience at its core.
+                        </p>
+                    </div>
+
+                    <div class="about-cta opacity-0 transform translate-y-8">
+                        <button class="group relative px-8 py-4 bg-gradient-to-r from-[#00b7ff] to-[#0040ff] rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
+                            <span class="relative z-10">Meet Our Team</span>
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#00c3ff] to-[#0056ff] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Stats Grid -->
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="about-stat space-y-4 p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl opacity-0 transform translate-y-8">
+                        <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent">3+</div>
+                        <div class="text-gray-300">Years of development</div>
+                    </div>
+
+                    <div class="about-stat space-y-4 p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl opacity-0 transform translate-y-8">
+                        <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent">12+</div>
+                        <div class="text-gray-300">Software engineers</div>
+                    </div>
+
+                    <div class="about-stat space-y-4 p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl opacity-0 transform translate-y-8">
+                        <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent">50+</div>
+                        <div class="text-gray-400 text-sm">Industries supported</div>
+                    </div>
+
+                    <div class="about-stat space-y-4 p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl opacity-0 transform translate-y-8">
+                        <div class="text-3xl md:text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent">99.9%</div>
+                        <div class="text-gray-300">Uptime guarantee</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="min-h-screen bg-gradient-to-br from-black via-gray-950 to-purple-950 flex items-center justify-center px-6 py-20 z-40">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="services-orb-1 absolute top-1/4 left-1/3 w-96 h-96 bg-blue-900/6 rounded-full blur-3xl"></div>
+            <div class="services-orb-2 absolute bottom-1/4 right-1/3 w-80 h-80 bg-purple-500/6 rounded-full blur-3xl"></div>
+            <div class="services-orb-3 absolute top-2/3 left-1/4 w-64 h-64 bg-cyan-500/6 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto w-full">
+            <!-- Section Header -->
+            <div class="text-center mb-20">
+                <div class="services-badge inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-full text-sm font-medium text-purple-300 mb-8 opacity-0 transform translate-y-8">
+                    <div class="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                    What We Do
+                </div>
+                
+                <h2 class="services-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 opacity-0 transform translate-y-8">
+                    Complete digital<br>
+                    <span class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#8b5cf6] text-transparent">growth solutions</span>
+                </h2>
+                
+                <p class="services-subtitle text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed opacity-0 transform translate-y-8">
+                    We don't just build software—we transform your entire digital presence to drive real business growth. From websites to lead conversion, we handle it all.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Service 1: Website & SEO -->
+                <div class="service-card group p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-blue-500/30 transition-all duration-500 opacity-0 transform translate-y-8">
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Website & SEO Optimization</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">Transform your outdated website into a lead-generating machine. We optimize every element for search engines and user experience to maximize your online presence.</p>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Mobile-First Design</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>SEO Optimization</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Speed Optimization</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>Conversion-Focused</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: Analytics & Insights -->
+                <div class="service-card group p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-purple-500/30 transition-all duration-500 opacity-0 transform translate-y-8">
+                    <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Analytics & Performance Tracking</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">Know exactly what's working and what isn't. Our comprehensive analytics dashboard shows you where your visitors come from, what they do, and how to improve conversion rates.</p>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3"></span>Visitor Behavior Tracking</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3"></span>Conversion Rate Analysis</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3"></span>ROI Measurement</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-3"></span>Performance Reports</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: Lead Engagement -->
+                <div class="service-card group p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-cyan-500/30 transition-all duration-500 opacity-0 transform translate-y-8">
+                    <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Instant Lead Engagement</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">Never miss a hot lead again. Our intelligent system identifies high-intent visitors and enables instant engagement through live chat, automated responses, and real-time notifications.</p>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-3"></span>Real-Time Chat</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-3"></span>Lead Scoring</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-3"></span>Instant Notifications</li>
+                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-3"></span>Automated Follow-ups</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- How It Works Process -->
+            <div class="mb-16">
+                <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">How We Drive Your Growth</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-white">1</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-2">Audit & Optimize</h4>
+                        <p class="text-gray-300">We analyze your current website, identify weaknesses, and implement proven optimization strategies for better search rankings and user experience.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-white">2</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-2">Track & Measure</h4>
+                        <p class="text-gray-300">Install comprehensive analytics to monitor visitor behavior, conversion paths, and identify the highest-performing content and pages.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-white">3</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-white mb-2">Engage & Convert</h4>
+                        <p class="text-gray-300">Capture hot leads the moment they show interest with instant chat, smart forms, and automated engagement sequences that turn visitors into customers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Products Section -->
+    <section id="products-section" class="products-scroll-section relative bg-gradient-to-br from-gray-950 via-black to-blue-950/20 z-30">
+        <div class="products-sticky-container sticky top-0 min-h-screen flex items-center justify-center px-6 py-20">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="products-orb-1 absolute top-1/4 left-1/3 w-96 h-96 bg-blue-900/6 rounded-full blur-3xl"></div>
+                <div class="products-orb-2 absolute bottom-1/4 right-1/3 w-80 h-80 bg-purple-500/6 rounded-full blur-3xl"></div>
+                <div class="products-orb-3 absolute top-2/3 left-1/4 w-64 h-64 bg-cyan-500/6 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto w-full">
+                <!-- Section Header -->
+                <div class="text-center mb-20">
+                    <div class="products-badge inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-full text-sm font-medium text-blue-300 mb-8 fade-in-up">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                        Our Products
+                    </div>
+                    
+                    <h2 class="products-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 fade-in-up" style="animation-delay: 0.2s;">
+                        <span>Powerful software</span><br>
+                        <span class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#00ffff] text-transparent">
+                            <span>that drives </span><span class="results-word">results</span>
+                        </span>
+                    </h2>
+                    
+                    <p class="products-subtitle text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed fade-in-up" style="animation-delay: 0.4s;">
+                        From instant quote generation to comprehensive customer management, our suite of tools is designed to accelerate your business growth.
+                    </p>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid grid lg:grid-cols-2 gap-12 mb-16">
+                    <!-- Product 1: Quote Generator -->
+                    <div class="service-card group p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-blue-500/30 transition-all duration-500 fade-in-up" style="animation-delay: 0.6s;">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold mb-2 text-white">Quote Generator</h3>
+                                <div class="inline-flex items-center px-3 py-1 bg-green-500/20 border border-green-500/30 rounded-full text-sm font-medium text-green-300">
+                                    <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                                    Available Now
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-300 mb-6 leading-relaxed text-lg">
+                            Create professional, accurate quotes in seconds. Our intelligent system learns from your pricing patterns and suggests optimal rates while maintaining your profit margins.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-4 mb-8">
+                            <div class="space-y-3">
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Instant quote creation
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Custom branding
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Smart pricing suggestions
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    PDF export
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Email integration
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Analytics dashboard
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="w-full group relative px-6 py-3 bg-gradient-to-r from-[#00b7ff] to-[#0040ff] rounded-xl text-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
+                            <span class="relative z-10">Start Free Trial</span>
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#00c3ff] to-[#0056ff] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </button>
+                    </div>
+
+                    <!-- Product 2: CRM -->
+                    <div class="service-card group p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-3xl hover:border-purple-500/30 transition-all duration-500 fade-in-up" style="animation-delay: 0.8s;">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold mb-2 text-white">CRM System</h3>
+                                <div class="inline-flex items-center px-3 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-sm font-medium text-orange-300">
+                                    <div class="w-2 h-2 bg-orange-400 rounded-full mr-2"></div>
+                                    Coming Soon
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-300 mb-6 leading-relaxed text-lg">
+                            A comprehensive customer relationship management system that seamlessly integrates with our quote generator. Track leads, manage relationships, and close more deals.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-4 mb-8">
+                            <div class="space-y-3">
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Lead tracking & scoring
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Contact management
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Pipeline visualization
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Automated follow-ups
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Sales reporting
+                                </div>
+                                <div class="flex items-center text-gray-300">
+                                    <svg class="w-5 h-5 text-purple-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Integration ready
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="w-full group relative px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-700 rounded-xl text-lg font-semibold transition-all duration-300 cursor-not-allowed" disabled>
+                            <span class="relative z-10 text-gray-400">Notify Me When Available</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bottom CTA Section -->
+                <div class="text-center fade-in-up" style="animation-delay: 1s;">
+                    <div class="inline-flex items-center justify-center p-8 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-3xl max-w-4xl mx-auto">
+                        <div class="text-center">
+                            <h3 class="text-3xl font-bold mb-4 text-white">Ready to accelerate your business?</h3>
+                            <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+                                Join thousands of businesses already using our tools to streamline their operations and boost revenue.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                <button class="group relative px-8 py-4 bg-gradient-to-r from-[#00b7ff] to-[#0040ff] rounded-xl text-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
+                                    <span class="relative z-10">Get Started Free</span>
+                                    <div class="absolute inset-0 bg-gradient-to-r from-[#00c3ff] to-[#0056ff] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </button>
+                                <button class="px-8 py-4 border border-gray-600 rounded-xl text-lg font-semibold text-gray-300 hover:border-gray-500 hover:text-white transition-all duration-300">
+                                    Schedule Demo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="sticky top-0 min-h-screen bg-gradient-to-br from-gray-950 via-black to-blue-950/20 flex items-center justify-center px-6 py-20 z-10">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="contact-orb-1 absolute top-1/4 right-1/3 w-96 h-96 bg-blue-500/8 rounded-full blur-3xl"></div>
+            <div class="contact-orb-2 absolute bottom-1/3 left-1/4 w-80 h-80 bg-purple-500/6 rounded-full blur-3xl"></div>
+            <div class="contact-orb-3 absolute top-2/3 right-1/4 w-64 h-64 bg-cyan-500/8 rounded-full blur-3xl"></div>
+        </div>
+    
+        <!-- Grid Pattern -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+    
+        <div class="relative z-10 max-w-7xl mx-auto w-full">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <div class="contact-badge inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-full text-sm font-medium text-blue-300 opacity-0 transform translate-y-8">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                        Let's Build Together
+                    </div>
+                    
+                    <h2 class="contact-title text-4xl md:text-5xl lg:text-6xl font-bold leading-tight opacity-0 transform translate-y-8">
+                        Ready to streamline<br>
+                        <span class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#00ffff] text-transparent">your business?</span>
+                    </h2>
+                    
+                    <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                        <p class="contact-text opacity-0 transform translate-y-8">
+                            Whether you need our quote generation software, custom web development, or comprehensive analytics, we're here to help transform your operations.
+                        </p>
+                        <p class="contact-text opacity-0 transform translate-y-8">
+                            Every project starts with understanding your unique business needs. We build solutions that scale with you, not against you.
+                        </p>
+                    </div>
+    
+                    <!-- Contact Info Cards -->
+                    <div class="space-y-4">
+                        <div class="contact-info-card flex items-center p-4 bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-2xl opacity-0 transform translate-y-8">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">Email Us</div>
+                                <div class="text-gray-400">hello@amksoftware.com</div>
+                            </div>
+                        </div>
+    
+                        <div class="contact-info-card flex items-center p-4 bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-2xl opacity-0 transform translate-y-8">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">Call Us</div>
+                                <div class="text-gray-400">+1 (267) 962-9559</div>
+                            </div>
+                        </div>
+    
+                        <div class="contact-info-card flex items-center p-4 bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-700/30 rounded-2xl opacity-0 transform translate-y-8">
+                            <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-white font-semibold">Visit Us</div>
+                                <div class="text-gray-400">New York, NY</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Right Form -->
+                <div class="contact-form-container opacity-0 transform translate-y-8">
+                    <form action="" class="space-y-6 p-8 bg-gradient-to-br from-gray-800/20 to-gray-900/20 backdrop-blur-sm border border-gray-700/30 rounded-3xl">
+                        <!-- Name Fields -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="firstName" class="block text-sm font-medium text-gray-300 mb-2">First Name</label>
+                                <input 
+                                    type="text" 
+                                    id="firstName" 
+                                    name="firstName" 
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
+                                    placeholder="John"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="block text-sm font-medium text-gray-300 mb-2">Last Name</label>
+                                <input 
+                                    type="text" 
+                                    id="lastName" 
+                                    name="lastName" 
+                                    required
+                                    class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
+                                    placeholder="Doe"
+                                >
+                            </div>
+                        </div>
+    
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required
+                                class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
+                                placeholder="john@company.com"
+                            >
+                        </div>
+    
+                        <!-- Company -->
+                        <div class="form-group">
+                            <label for="company" class="block text-sm font-medium text-gray-300 mb-2">Company</label>
+                            <input 
+                                type="text" 
+                                id="company" 
+                                name="company"
+                                class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
+                                placeholder="Your Company"
+                            >
+                        </div>
+    
+                        <!-- Project Type -->
+                        <div class="form-group">
+                            <label for="projectType" class="block text-sm font-medium text-gray-300 mb-2">Project Type</label>
+                            <select 
+                                id="projectType" 
+                                name="projectType"
+                                class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300"
+                            >
+                                <option value="">Select project type</option>
+                                <option value="quote-software">Quote Generation Software</option>
+                                <option value="crm-interest">CRM System (Coming Soon)</option>
+                                <option value="web-development">Web Development</option>
+                                <option value="analytics">Business Analytics</option>
+                                <option value="api-integration">API Development</option>
+                                <option value="cloud-solutions">Cloud Solutions</option>
+                                <option value="consultation">General Consultation</option>
+                            </select>
+                        </div>
+    
+                        <!-- Services Interest -->
+                        <div class="form-group">
+                            <label class="block text-sm font-medium text-gray-300 mb-3">Additional Services of Interest</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="services[]" value="quote-generation" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
+                                    <span class="ml-2 text-sm text-gray-300">Quote Software</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="services[]" value="crm-system" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
+                                    <span class="ml-2 text-sm text-gray-300">CRM System</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="services[]" value="web-design" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
+                                    <span class="ml-2 text-sm text-gray-300">Web Development</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="services[]" value="analytics" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
+                                    <span class="ml-2 text-sm text-gray-300">Analytics</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="services[]" value="api-development" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-2">
+                                    <span class="ml-2 text-sm text-gray-300">API Development</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="services[]" value="cloud-solutions" class="w-4 h-4 text-blue-500 bg-gray-800 border-gray-600 rounded focus:ring-blue-500 focus:ring-2">
+                                    <span class="ml-2 text-sm text-gray-300">Cloud Solutions</span>
+                                </label>
+                            </div>
+                        </div>
+    
+                        <!-- Message -->
+                        <div class="form-group">
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Tell us about your project</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="4"
+                                class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none"
+                                placeholder="Describe your software needs, business challenges, or what you'd like to achieve..."
+                            ></textarea>
+                        </div>
+    
+                        <!-- Submit Button -->
+                        <div class="form-group">
+                            <button 
+                                type="submit"
+                                class="w-full group relative px-8 py-4 bg-gradient-to-r from-[#00b7ff] to-[#00ffff] rounded-xl text-lg font-semibold text-black hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-[1.02]"
+                            >
+                                <span class="relative z-10">Get Your Free Consultation</span>
+                                <div class="absolute inset-0 bg-gradient-to-r from-[#00c3ff] to-[#00ffff] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </button>
+                            <p class="text-xs text-gray-400 mt-2 text-center">We'll respond within 24 hours with a custom solution plan</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+        <script type="module">
+            import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+    
+            document.addEventListener('DOMContentLoaded', () => {
+                // Contact section orbs
+                animate('.contact-orb-1', { y: [-10, 10, -10], x: [5, -5, 5] }, { duration: 8, repeat: Infinity, easing: 'ease-in-out' });
+                animate('.contact-orb-2', { y: [15, -15, 15] }, { duration: 7, repeat: Infinity, easing: 'ease-in-out', delay: 1 });
+                animate('.contact-orb-3', { x: [-15, 15, -15] }, { duration: 9, repeat: Infinity, easing: 'ease-in-out', delay: 2 });
+    
+                // Intersection Observer for contact section
+                const contactObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animate('.contact-badge', { opacity: [0, 1], y: [8, 0] }, { duration: 0.6, easing: 'ease-out' });
+                            animate('.contact-title', { opacity: [0, 1], y: [12, 0] }, { duration: 0.8, easing: 'ease-out', delay: 0.2 });
+                            animate('.contact-text', { opacity: [0, 1], y: [8, 0] }, { duration: 0.6, easing: 'ease-out', stagger: stagger(0.1), delay: 0.4 });
+                            animate('.contact-info-card', { opacity: [0, 1], y: [8, 0] }, { duration: 0.6, easing: 'ease-out', stagger: stagger(0.1), delay: 0.6 });
+                            animate('.contact-form-container', { opacity: [0, 1], y: [12, 0] }, { duration: 0.8, easing: 'ease-out', delay: 0.5 });
+                            
+                            contactObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+    
+                const contactBadge = document.querySelector('.contact-badge');
+                if (contactBadge) contactObserver.observe(contactBadge);
+    
+                // Form interactions
+                const formInputs = document.querySelectorAll('input, textarea, select');
+                formInputs.forEach(input => {
+                    input.addEventListener('focus', () => {
+                        animate(input, { scale: [1, 1.02, 1] }, { duration: 0.3, easing: 'ease-out' });
+                    });
+                });
+            });
+        </script>
+    </section>
+
+    <script type="module">
+        import { animate, stagger, scroll } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Background orbs animations
+            animate('.bg-orb-1', { y: [-20, 20, -20] }, { duration: 6, repeat: Infinity, easing: 'ease-in-out' });
+            animate('.bg-orb-2', { y: [20, -20, 20] }, { duration: 8, repeat: Infinity, easing: 'ease-in-out', delay: 1 });
+            animate('.bg-orb-3', { scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }, { duration: 10, repeat: Infinity, easing: 'ease-in-out', delay: 0.5 });
+
+            // About section orbs
+            animate('.about-orb-1', { x: [-10, 10, -10] }, { duration: 7, repeat: Infinity, easing: 'ease-in-out' });
+            animate('.about-orb-2', { y: [15, -15, 15] }, { duration: 9, repeat: Infinity, easing: 'ease-in-out', delay: 1.5 });
+
+            // Services section orbs
+            animate('.services-orb-1', { y: [-15, 15, -15], x: [10, -10, 10] }, { duration: 8, repeat: Infinity, easing: 'ease-in-out' });
+            animate('.services-orb-2', { y: [10, -10, 10] }, { duration: 6, repeat: Infinity, easing: 'ease-in-out', delay: 2 });
+            animate('.services-orb-3', { x: [-20, 20, -20] }, { duration: 10, repeat: Infinity, easing: 'ease-in-out', delay: 1 });
+
+            // Products section orbs
+            animate('.products-orb-1', { y: [-12, 12, -12], x: [8, -8, 8] }, { duration: 9, repeat: Infinity, easing: 'ease-in-out' });
+            animate('.products-orb-2', { y: [8, -8, 8] }, { duration: 7, repeat: Infinity, easing: 'ease-in-out', delay: 1.5 });
+            animate('.products-orb-3', { x: [-18, 18, -18] }, { duration: 11, repeat: Infinity, easing: 'ease-in-out', delay: 0.5 });
+
+            // Hero section animations
+            animate('.hero-title', { opacity: [0, 1], y: [12, 0] }, { duration: 1, easing: 'ease-out', delay: 0.3 });
+
+            const titleEls = Array.from(document.querySelectorAll('.hero-title > *'));
+            const titlePromises = titleEls.map((el, i) => 
+                animate(
+                    el,
+                    { opacity: [0, 1], y: [12, 0] },
+                    { duration: 0.8, delay: 0.5 + 0.1 * i, easing: 'ease-out' }
+                ).finished
+            );
+          
+            Promise.all(titlePromises)
+                .then(() => {
+                    // Subtitle and buttons
+                    return Promise.all([
+                        animate('.hero-subtitle', { opacity: [0, 1], y: [12, 0] }, { duration: 1, easing: 'ease-out', delay: 0.1 }).finished,
+                        animate('.cta-primary, .cta-secondary', { opacity: [0, 1], y: [12, 0] }, { duration: 1, easing: 'ease-out', delay: 0.1 }).finished
+                    ]);
+                })
+                .then(() => {
+                    // Trust items
+                    animate(
+                        '.trust-item, .scroll-indicator',
+                        { opacity: [0, 1], y: [12, 0] },
+                        { duration: 0.8, easing: 'ease-out', stagger: stagger(0.1) }
+                    );
+                    // Count up numbers
+                    document.querySelectorAll('[data-number]').forEach(e => {
+                        const end = +e.dataset.number;
+                        
+                        animate(
+                            0,
+                            end,
+                            {
+                                duration: 2,
+                                ease: 'circOut',
+                                delay: 0.1,
+                                onUpdate(latest) { e.textContent = Math.round(latest); }
+                            }
+                        );
+                    });
+                });
+
+            // Intersection Observer for scroll-triggered animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        
+                        // About section animations
+                        if (target.classList.contains('about-badge')) {
+                            animate('.about-badge', { opacity: [0, 1], y: [8, 0] }, { duration: 0.6, easing: 'ease-out' });
+                            animate('.about-title', { opacity: [0, 1], y: [12, 0] }, { duration: 0.8, easing: 'ease-out', delay: 0.2 });
+                            animate('.about-text', { opacity: [0, 1], y: [8, 0] }, { duration: 0.6, easing: 'ease-out', stagger: stagger(0.1), delay: 0.4 });
+                            animate('.about-cta', { opacity: [0, 1], y: [8, 0] }, { duration: 0.6, easing: 'ease-out', delay: 0.8 });
+                            animate('.about-stat', { opacity: [0, 1], y: [12, 0] }, { duration: 0.8, easing: 'ease-out', stagger: stagger(0.1), delay: 0.6 });
+                        }
+                        
+                        // Services section animations
+                        if (target.classList.contains('services-badge')) {
+                            animate('.services-badge', { opacity: [0, 1], y: [8, 0] }, { duration: 0.6, easing: 'ease-out' });
+                            animate('.services-title', { opacity: [0, 1], y: [12, 0] }, { duration: 0.8, easing: 'ease-out', delay: 0.2 });
+                            animate('.services-subtitle', { opacity: [0, 1], y: [8, 0] }, { duration: 0.6, easing: 'ease-out', delay: 0.4 });
+                            animate('.service-card', { opacity: [0, 1], y: [16, 0] }, { duration: 0.8, easing: 'ease-out', stagger: stagger(0.1), delay: 0.6 });
+                        }
+                        
+                        // Products section animations
+                        if (target.classList.contains('products-badge')) {
+                            animate('.products-badge', { opacity: [0, 1], y: [8, 0] }, { duration: 0.6, easing: 'ease-out' });
+                            animate('.products-title', { opacity: [0, 1], y: [12, 0] }, { duration: 0.8, easing: 'ease-out', delay: 0.2 });
+                            animate('.products-subtitle', { opacity: [0, 1], y: [8, 0] }, { duration: 0.6, easing: 'ease-out', delay: 0.4 });
+                            animate('.service-card', { opacity: [0, 1], y: [16, 0] }, { duration: 0.8, easing: 'ease-out', stagger: stagger(0.1), delay: 0.6 });
+                            animate('.services-cta', { opacity: [0, 1], y: [8, 0] }, { duration: 0.6, easing: 'ease-out', delay: 1.2 });
+                        }
+                        
+                        observer.unobserve(target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe trigger elements
+            const aboutBadge = document.querySelector('.about-badge');
+            const servicesBadge = document.querySelector('.services-badge');
+            const productsBadge = document.querySelector('.products-badge');
+            
+            if (aboutBadge) observer.observe(aboutBadge);
+            if (servicesBadge) observer.observe(servicesBadge);
+            if (productsBadge) observer.observe(productsBadge);
+        });
+
+        // Logo component
+        class Logo extends HTMLElement {
+            connectedCallback() {
+                this.innerHTML = `<p class="bg-clip-text bg-gradient-to-r from-[#00b7ff] to-[#0040ff] text-transparent font-bold">AMK Software</p>`;
+            }
+        }
+        customElements.define('brand-logo', Logo);
+    </script>
+    
+        
+        
+</body>
+</html>
