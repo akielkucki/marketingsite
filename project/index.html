@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'bounce-gentle': 'bounceGentle 2s infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        bounceGentle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="../js/projectData.js"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/projects" class="text-xl font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                    ← Back to Portfolio
+                </a>
+                <div class="flex space-x-4" id="projectNavigation">
+                    <!-- Dynamic project navigation will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Project Not Found -->
+        <div id="projectNotFound" class="hidden text-center py-20">
+            <div class="mb-8">
+                <div class="w-24 h-24 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-12 h-12 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.382 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                    </svg>
+                </div>
+                <h1 class="text-3xl font-bold text-white mb-4">Project Not Found</h1>
+                <p class="text-gray-400 mb-8">The project you're looking for doesn't exist or has been moved.</p>
+                <a href="/" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors">
+                    Return to Portfolio
+                </a>
+            </div>
+        </div>
+
+        <!-- Project Content -->
+        <div id="projectContent" class="hidden">
+            <!-- Project Header -->
+            <div class="text-center mb-16 animate-fade-in">
+                <div class="inline-flex items-center px-4 py-2 bg-blue-500/10 text-blue-300 text-sm rounded-full mb-6" id="projectCategory">
+                    <!-- Category will be inserted here -->
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent" id="projectTitle">
+                    <!-- Title will be inserted here -->
+                </h1>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed" id="projectDescription">
+                    <!-- Description will be inserted here -->
+                </p>
+            </div>
+
+            <!-- Project Details Grid -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-16 sticky top-0">
+                <!-- Project Info -->
+                <div class="lg:col-span-1 space-y-6 animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 ">
+                        <h3 class="text-xl font-bold mb-4 text-white">Project Details</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-gray-400 text-sm">Client:</span>
+                                <p class="text-white font-semibold" id="projectClient"><!-- Client --></p>
+                            </div>
+                            <div>
+                                <span class="text-gray-400 text-sm">Duration:</span>
+                                <p class="text-white font-semibold" id="projectDuration"><!-- Duration --></p>
+                            </div>
+                            <div>
+                                <span class="text-gray-400 text-sm">Year:</span>
+                                <p class="text-white font-semibold" id="projectYear"><!-- Year --></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technologies -->
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6">
+                        <h3 class="text-xl font-bold mb-4 text-white">Technologies</h3>
+                        <div class="flex flex-wrap gap-2" id="projectTechnologies">
+                            <!-- Technologies will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Links -->
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6" id="projectLinks">
+                        <h3 class="text-xl font-bold mb-4 text-white">Links</h3>
+                        <div class="space-y-3" id="projectLinksContent">
+                            <!-- Links will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="lg:col-span-2 space-y-8 animate-slide-up" style="animation-delay: 0.4s;">
+                    <!-- Hero Image -->
+                    <div class="aspect-video bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-2xl overflow-hidden">
+                        <img id="projectImage" src="" alt="Project Image" class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- Long Description -->
+                    <div class="bg-gray-800/30 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-white">Overview</h3>
+                        <p class="text-gray-300 leading-relaxed text-lg" id="projectLongDescription">
+                            <!-- Long description will be inserted here -->
+                        </p>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="bg-gray-800/30 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-6 text-white">Key Features</h3>
+                        <div class="grid md:grid-cols-2 gap-4" id="projectFeatures">
+                            <!-- Features will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-6 text-white">Results & Impact</h3>
+                        <div class="grid md:grid-cols-2 gap-6" id="projectResults">
+                            <!-- Results will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Gallery -->
+                    <div class="bg-gray-800/30 backdrop-blur-sm border border-gray-700/30 rounded-2xl p-8" id="projectGallerySection">
+                        <h3 class="text-2xl font-bold mb-6 text-white">Gallery</h3>
+                        <div class="grid md:grid-cols-2 gap-4" id="projectGallery">
+                            <!-- Gallery images will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Get project ID from URL parameters
+        function getProjectId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('project');
+        }
+
+        // Create project navigation
+        function createProjectNavigation(currentProjectId) {
+            const navContainer = document.getElementById('projectNavigation');
+            navContainer.innerHTML = '';
+
+            Object.keys(window.projects).forEach(projectId => {
+                const project = window.projects[projectId];
+                const isActive = projectId === currentProjectId;
+                
+                const navItem = document.createElement('a');
+                navItem.href = `?project=${projectId}`;
+                navItem.className = `px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    isActive 
+                        ? 'bg-blue-600 text-white' 
+                        : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                }`;
+                navItem.textContent = `Project ${projectId}`;
+                
+                navContainer.appendChild(navItem);
+            });
+        }
+
+        // Render project content
+        function renderProject(projectId) {
+            const project = window.projects[projectId];
+            
+            if (!project) {
+                document.getElementById('projectNotFound').classList.remove('hidden');
+                document.getElementById('projectContent').classList.add('hidden');
+                return;
+            }
+
+            // Show project content
+            document.getElementById('projectNotFound').classList.add('hidden');
+            document.getElementById('projectContent').classList.remove('hidden');
+
+            // Update page title
+            document.title = `${project.title} - Portfolio`;
+
+            // Basic info
+            document.getElementById('projectCategory').textContent = project.category;
+            document.getElementById('projectTitle').textContent = project.title;
+            document.getElementById('projectDescription').textContent = project.description;
+            document.getElementById('projectLongDescription').textContent = project.longDescription;
+            document.getElementById('projectClient').textContent = project.client;
+            document.getElementById('projectDuration').textContent = project.duration;
+            document.getElementById('projectYear').textContent = project.year;
+            document.getElementById('projectImage').src = project.image;
+            document.getElementById('projectImage').alt = project.title;
+
+            // Technologies
+            const techContainer = document.getElementById('projectTechnologies');
+            techContainer.innerHTML = '';
+            project.technologies.forEach(tech => {
+                const techSpan = document.createElement('span');
+                techSpan.className = 'px-3 py-1 bg-blue-500/10 text-blue-300 text-sm rounded-full';
+                techSpan.textContent = tech;
+                techContainer.appendChild(techSpan);
+            });
+
+            // Links
+            const linksContainer = document.getElementById('projectLinksContent');
+            linksContainer.innerHTML = '';
+            
+            if (project.liveUrl) {
+                const liveLink = document.createElement('a');
+                liveLink.href = project.liveUrl;
+                liveLink.target = '_blank';
+                liveLink.className = 'flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors';
+                liveLink.innerHTML = `
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                    <span>View Live Site</span>
+                `;
+                linksContainer.appendChild(liveLink);
+            }
+
+            if (project.githubUrl) {
+                const githubLink = document.createElement('a');
+                githubLink.href = project.githubUrl;
+                githubLink.target = '_blank';
+                githubLink.className = 'flex items-center space-x-2 text-gray-400 hover:text-white transition-colors';
+                githubLink.innerHTML = `
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>View Source Code</span>
+                `;
+                linksContainer.appendChild(githubLink);
+            }
+
+            // Features
+            const featuresContainer = document.getElementById('projectFeatures');
+            featuresContainer.innerHTML = '';
+            project.features.forEach(feature => {
+                const featureDiv = document.createElement('div');
+                featureDiv.className = 'flex items-start space-x-3';
+                featureDiv.innerHTML = `
+                    <div class="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                        <svg class="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <span class="text-gray-300">${feature}</span>
+                `;
+                featuresContainer.appendChild(featureDiv);
+            });
+
+            // Results
+            const resultsContainer = document.getElementById('projectResults');
+            resultsContainer.innerHTML = '';
+            Object.entries(project.results).forEach(([key, value]) => {
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'text-center p-4 bg-white/5 rounded-xl';
+                
+                const label = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+                resultDiv.innerHTML = `
+                    <div class="text-2xl font-bold text-blue-400 mb-1">${value}</div>
+                    <div class="text-gray-400 text-sm">${label}</div>
+                `;
+                resultsContainer.appendChild(resultDiv);
+            });
+
+            // Gallery
+            const galleryContainer = document.getElementById('projectGallery');
+            galleryContainer.innerHTML = '';
+            if (project.gallery && project.gallery.length > 0) {
+                project.gallery.forEach((imageUrl, index) => {
+                    const imageDiv = document.createElement('div');
+                    imageDiv.className = 'aspect-video bg-gray-700/50 rounded-xl overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300';
+                    imageDiv.innerHTML = `<img src="${imageUrl}" alt="${project.title} Gallery ${index + 1}" class="w-full h-full object-cover">`;
+                    galleryContainer.appendChild(imageDiv);
+                });
+            } else {
+                document.getElementById('projectGallerySection').style.display = 'none';
+            }
+
+            // Create navigation
+            createProjectNavigation(projectId);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectId = getProjectId();
+            renderProject(projectId);
+        });
+
+        // Handle browser back/forward
+        window.addEventListener('popstate', function() {
+            const projectId = getProjectId();
+            renderProject(projectId);
+        });
+    </script>
+</body>
+</html>
